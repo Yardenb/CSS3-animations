@@ -1,0 +1,251 @@
+html, body{
+    margin: 0;
+}
+.content{
+    height: 100vh;
+}
+/* SKY CONTAINER */
+.sky{
+    overflow: hidden;
+    background-color: lightblue;
+    min-height: 70%;
+}
+
+.sun{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fefe4c;
+    position: relative;
+    top: 30px;
+    left: 30px;
+    box-shadow: 0px 0px 29px 9px #D5A23B;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.sun:active{
+    background-color: inherit;
+    box-shadow: inset 22px -7px 1px 6px #ebe8e0;
+}
+.cloud{
+    width: 200px;
+    height: 100px;
+    border-radius: 50%/50%;
+    background-color: white;
+    filter: blur(3px);  
+    position: relative;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.cloud:active{
+    background-color: grey;
+}
+.cloud-a{
+    top: 80px;
+    opacity: 0.9;
+    animation: clouds 70s 2s linear infinite both;
+}
+.cloud-b{
+    top:50px;
+    animation: clouds 50s linear infinite both;
+
+}
+.cloud:before, .cloud:after{
+    content: "";
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: inherit;
+    border: inherit;
+}
+.cloud:before{
+    position: relative;
+    left: -25px;
+    top: -76px;
+}
+.cloud:after{
+    position: relative;
+    top: -140px;
+    left: 70px;
+}
+.grass{
+    background-color: #48c848;
+    min-height: 30%;
+}
+
+/* FLOWER - BASE CSS */
+.flower-base{
+    width: 30px;
+    height: 100px;
+    background-color:#D2691E;
+}
+.flower-top{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fefe4c;
+    z-index: 1;
+    position: relative;
+}
+.flower-head{
+    cursor: pointer;
+}
+.flower-petal{
+    width: 140px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #f8a62b;
+    position: relative;
+    left: -55px;
+    top: 30px;
+}
+.flower-petal:before, .flower-petal:after{
+    content: "";
+    width: 140px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: inherit;
+    display: inline-block;
+}
+.flower-petal:before{
+    transform: rotateZ(60deg)
+}
+.flower-petal:after{
+    transform: rotateZ(120deg);
+    position: relative;
+    top: -34px;
+}
+/* FLOWERS SPECIFIC */
+.flower-a{
+    position: absolute;
+    bottom: 20%;
+    left: 20%;
+}
+.flower-b{
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+}
+.flower-c{
+    position: absolute;
+    bottom: 15%;
+    left: 60%;
+}
+/* FLOWER ANIMATION */
+:active>.flower-head-a{
+    animation: flowerShake 1s ;
+    transform-origin: 15px 70px;
+    animation-timing-function: cubic-bezier(.34,.02,.83,.67) 
+}
+
+:active>.flower-head-b{
+    animation: flowerUp 2s 1s linear ;
+}
+:active>.flower-top-b,:active> .flower-petal-b{
+    animation: spinFlower 2s  ;
+    animation-timing-function: cubic-bezier(.4,.09,1,1)
+}
+:active>.flower-petal-c{
+    animation: flowerHide 2.5s linear both;
+}
+/* HOUSE */
+.house-base{
+    width: 150px;
+    height: 150px;
+    transform: skew(20deg);
+    background: #1386e1;
+    position: absolute;
+    bottom: 17%;
+    left: 75%;
+}
+.house-base:active{
+    animation: houseStands 1s forwards linear;
+}
+.house-roof{
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-bottom: 130px solid #dc102b;
+    position: relative;
+    bottom: 86%;
+}
+.eye{
+    width: 50px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 20%;
+    text-align: center;
+}
+.eyes{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+}
+.eyes:active{
+    opacity: 1;
+}
+.eye:after{
+    content:"";
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #000;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+}
+.eye-left{
+    left: 10%;
+}
+.eye-right{
+    right:10%;
+}
+@keyframes clouds{
+    from{transform: translateX(-300px)}
+    to{transform: translateX(1700px)}
+}
+@keyframes flowerUp{
+    0%{}
+    50%{transform: translateY(-500px)}
+    95%{transform: translateY(20px)}
+    100%{}
+}
+@keyframes spinFlower{
+    0%{}
+    100%{transform: rotate(720deg)}
+}
+@keyframes flowerShake{
+    9%{transform: scale(1.1)}
+    10%, 90% {transform: translateX(-1px) scale(1.1)}
+    20%, 80% {transform: translateX(2px)scale(1.1) rotate(10deg)}
+    30%, 50%, 70% {transform: translateX(-4px) scale(1.1) rotate(-10deg)}
+    40%, 60% {transform: translateX(4px) scale(1.1) rotate(10deg)}
+    95%{transform: scale(1)}
+}
+@keyframes flowerHide{
+    0%{transform: scale(1)}
+    20%{transform: scale(0)}
+    40%{transform: scale(0)}
+    55%{transform:scale(0.4)}
+    90%{transform: scale(0.4)}
+    100%{transform: scale(1)}
+}
+@keyframes flowerPick{
+    0%{transform: scale(0)}
+    100%{transform: scale(0.2)}
+}
+@keyframes houseStands{
+    10%{transform: translateY(-20px)}
+    20%,80%{transform: translateX(2px), translateY(-30px)}
+    30%,70%{transform: translateX(-2px) translateY(-30px)}
+    40%,60%{transform: translateX(3px) translateY(-30px)}
+    50%{transform: translateX(-3px) translateY(-30px)}
+    100%{transform: skew(0deg) translateY(0)}
+}
